@@ -31,19 +31,8 @@ jobs:
           cache: npm
           cache-dependency-path: app/package-lock.json
 
-      - name: Harden npm networking and disable audit
-        run: |
-          npm config set fetch-retries 5
-          npm config set fetch-retry-factor 2
-          npm config set fetch-retry-mintimeout 20000
-          npm config set fetch-retry-maxtimeout 120000
-          npm config set timeout 600000
-          npm set audit false
-          npm set fund false
-
-      - name: Install (with retries)
-        run: |
-          npm ci --no-audit --no-fund || (sleep 15 && npm ci --no-audit --no-fund) || (sleep 45 && npm ci --no-audit --no-fund)
+      - name: Install
+        run: npm ci
 
       - name: Build
         run: npm run build
