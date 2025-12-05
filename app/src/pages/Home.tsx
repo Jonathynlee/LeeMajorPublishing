@@ -39,8 +39,9 @@ export default function Home() {
             LeeMajor Publishing
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ fontSize: { xs: '1rem', sm: '1.125rem' } }}>
-            We publish fantasy fiction that brings wild worlds to life. Discover stories of
-            soaring skyships, whispering forests, and oceans that remember.
+          Journey Beyond the Edge of the Known.
+Across floating islands, ancient forests humming with hidden energy, and cities built on secrets older than memory, LeeMajor Publishing champions stories that take readers far beyond ordinary life.
+Discover adventures that reshape what it means to dream.
           </Typography>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ pt: 1, width: '100%' }}>
             <Button
