@@ -148,7 +148,7 @@ function ThemeToggle({ fullWidth }: ToggleProps) {
             : "linear-gradient(180deg, rgba(30,34,44,0.8), rgba(18,21,28,0.6))",
         backdropFilter: "blur(6px)",
         borderColor: theme.palette.divider,
-        '&:hover': {
+        "&:hover": {
           borderColor: theme.palette.primary.main,
         },
       }}

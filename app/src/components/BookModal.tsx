@@ -37,7 +37,7 @@ function BookModalComponent({ open, book, onClose }: Props) {
       <Divider />
       <DialogContent>
         <Grid container spacing={3} alignItems="stretch">
-          <Grid item xs={12} md={5}>
+          <Grid size={{xs: 12, md: 5}}>
             <Card variant="outlined" sx={{ borderRadius: 2 }}>
               <CardMedia
                 component="img"
@@ -47,7 +47,7 @@ function BookModalComponent({ open, book, onClose }: Props) {
               />
             </Card>
           </Grid>
-          <Grid item xs={12} md={7}>
+          <Grid size={{xs: 12, md: 7}}>
             <Stack spacing={2} height="100%">
               <Typography variant="body1" color="text.primary">
                 {book.description}
