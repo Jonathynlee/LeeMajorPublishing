@@ -13,7 +13,7 @@ function BookCardComponent({ book, onClick }: Props) {
       <CardActionArea onClick={() => onClick(book)} sx={{ height: '100%' }}>
         <CardMedia
           component="img"
-          height="300"
+          height="600"
           image={book.smallImageUrl}
           alt={book.title}
           sx={{ objectFit: 'cover' }}

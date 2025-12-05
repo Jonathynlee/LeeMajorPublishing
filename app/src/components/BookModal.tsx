@@ -43,7 +43,7 @@ function BookModalComponent({ open, book, onClose }: Props) {
                 component="img"
                 image={book.imageUrl}
                 alt={book.title}
-                sx={{ height: { xs: 220, sm: 320 }, objectFit: 'cover' }}
+                sx={{ objectFit: 'cover' }}
               />
             </Card>
           </Grid>
