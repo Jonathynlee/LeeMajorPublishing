@@ -153,9 +153,10 @@ export default function Home() {
                   <Button
                     variant="contained"
                     color="primary"
-                    href={latest.amazonUrl}
-                    target="_blank"
-                    rel="noopener"
+                  component={RouterLink}
+                  to={`/redirectSale/amazon/${latest.id}`}
+                  target="_blank"
+                  rel="noopener"
                   >
                     Buy on Amazon
                   </Button>

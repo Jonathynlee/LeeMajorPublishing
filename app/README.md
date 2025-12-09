@@ -71,3 +71,22 @@ export default defineConfig([
   },
 ])
 ```
+
+## Environment variables (reCAPTCHA)
+
+Vite in the browser only exposes variables prefixed with `VITE_`. The reCAPTCHA site key is public and safe to expose; the secret key must never live in this repo or any client `.env`.
+
+- Copy `env.sample` to a local (uncommitted) `.env.local` and set:
+
+```
+VITE_RECAPTCHA_SITE_KEY=6Lec5SUsAAAAAOdbXFjwE-n1ftOTjNp1ZJGVbnb7
+```
+
+- The secret key must be stored only on a serverless/backend as an environment variable:
+
+```
+RECAPTCHA_SECRET_KEY=6Lec5SUsAAAAAA4AbErA6-WWQKyTiWjGsssjXTlG
+```
+
+Because this site is hosted on GitHub Pages (static hosting), you’ll need a separate serverless function (e.g., Vercel/Netlify/Cloudflare/AWS Lambda) to receive the form, verify the token with Google using `RECAPTCHA_SECRET_KEY`, and then send mail/process the message. Point the form POST to that function’s URL.
+

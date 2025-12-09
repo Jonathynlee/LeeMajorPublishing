@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import {
   Alert,
   Box,
@@ -10,19 +10,27 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
+import ReCAPTCHA from 'react-google-recaptcha'
 
 export default function Contact() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [open, setOpen] = useState(false)
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
+  const recaptchaRef = useRef<ReCAPTCHA | null>(null)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    if (!captchaToken) {
+      return
+    }
     setOpen(true)
     setName('')
     setEmail('')
     setMessage('')
+    recaptchaRef.current?.reset()
+    setCaptchaToken(null)
   }
 
   return (
@@ -58,7 +66,12 @@ export default function Contact() {
                 multiline
                 minRows={4}
               />
-              <Button type="submit" variant="contained" size="large">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY as string}
+                onChange={setCaptchaToken}
+              />
+              <Button type="submit" variant="contained" size="large" disabled={!captchaToken}>
                 Send Message
               </Button>
             </Stack>

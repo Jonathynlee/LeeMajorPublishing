@@ -56,7 +56,10 @@ function BookModalComponent({ open, book, onClose }: Props) {
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={() => window.open(book.amazonUrl, '_blank')}
+                  onClick={() => {
+                    onClose()
+                    window.open(`/redirectSale/amazon/${book.id}`, '_blank', 'noopener')
+                  }}
                   fullWidth={isSmDown}
                 >
                   See on Amazon

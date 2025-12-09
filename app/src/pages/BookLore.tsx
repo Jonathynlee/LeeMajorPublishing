@@ -31,7 +31,13 @@ export default function BookLore() {
       </Card>
       <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
         <Button component={RouterLink} to="/products" variant="outlined">Back to Books</Button>
-        <Button variant="contained" onClick={() => window.open(book.amazonUrl, '_blank')}>
+        <Button
+          variant="contained"
+          component={RouterLink}
+          to={`/redirectSale/amazon/${book.id}`}
+          target="_blank"
+          rel="noopener"
+        >
           See on Amazon
         </Button>
       </Stack>

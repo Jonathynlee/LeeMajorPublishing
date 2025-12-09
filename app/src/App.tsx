@@ -10,6 +10,8 @@ const About = lazy(() => import('./pages/About'))
 const Products = lazy(() => import('./pages/Products'))
 const Contact = lazy(() => import('./pages/Contact'))
 const BookLore = lazy(() => import('./pages/BookLore'))
+const RedirectSale = lazy(() => import('./pages/RedirectSale'))
+const GetPublished = lazy(() => import('./pages/GetPublished'))
 
 function App() {
   return (
@@ -22,7 +24,9 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/get-published" element={<GetPublished />} />
             <Route path="/lore/:bookId" element={<BookLore />} />
+            <Route path="/redirectSale/:site/:bookId" element={<RedirectSale />} />
           </Routes>
         </Suspense>
       </Container>
