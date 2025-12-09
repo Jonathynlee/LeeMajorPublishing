@@ -47,10 +47,9 @@ jobs:
         with:
           path: app/dist
       - name: Set environment variable
-        run: |
-          echo "VITE_RECAPTCHA_SITE_KEY=${{ env.VITE_RECAPTCHA_SITE_KEY }}" >> app/.env
-          env:
-            VITE_RECAPTCHA_SITE_KEY: ${{ env.VITE_RECAPTCHA_SITE_KEY }}
+        run: echo "Configuring environment variable"
+        env:
+          VITE_RECAPTCHA_SITE_KEY: ${{ env.VITE_RECAPTCHA_SITE_KEY }}
 
   deploy:
     environment:
