@@ -4,8 +4,6 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
-env:
-  VITE_RECAPTCHA_SITE_KEY: ${{ vars.VITE_RECAPTCHA_SITE_KEY }}
 permissions:
   contents: read
   pages: write
@@ -17,6 +15,9 @@ concurrency:
 
 jobs:
   build:
+    environment: github-pages
+    env:
+      VITE_RECAPTCHA_SITE_KEY: ${{ vars.VITE_RECAPTCHA_SITE_KEY }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -46,10 +47,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: app/dist
-      - name: Set environment variable
-        run: echo "Configuring environment variable"
-        env:
-          VITE_RECAPTCHA_SITE_KEY: ${{ env.VITE_RECAPTCHA_SITE_KEY }}
 
   deploy:
     environment:
