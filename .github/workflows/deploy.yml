@@ -20,6 +20,8 @@ jobs:
     defaults:
       run:
         working-directory: app
+    env:
+      VITE_RECAPTCHA_SITE_KEY: ${{ vars.VITE_RECAPTCHA_SITE_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -55,5 +57,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
 
 
