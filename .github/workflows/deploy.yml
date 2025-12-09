@@ -21,8 +21,7 @@ jobs:
     defaults:
       run:
         working-directory: app
-    env:
-      VITE_RECAPTCHA_SITE_KEY: ${{ vars.VITE_RECAPTCHA_SITE_KEY }}
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -47,6 +46,11 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: app/dist
+      - name: Set environment variable
+        run: |
+          echo "VITE_RECAPTCHA_SITE_KEY=${{ env.VITE_RECAPTCHA_SITE_KEY }}" >> app/.env
+          env:
+            VITE_RECAPTCHA_SITE_KEY: ${{ env.VITE_RECAPTCHA_SITE_KEY }}
 
   deploy:
     environment:
