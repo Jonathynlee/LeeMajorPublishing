@@ -4,7 +4,8 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
-
+env:
+  VITE_RECAPTCHA_SITE_KEY: ${{ vars.VITE_RECAPTCHA_SITE_KEY }}
 permissions:
   contents: read
   pages: write
