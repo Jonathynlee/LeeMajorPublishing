@@ -1,8 +1,8 @@
 import { Box, Button, Card, CardContent, Stack, Typography } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
-import BannerLogo from '../assets/LeeMajor.svg'
 
 export default function GetPublished() {
+  const bannerImage = "https://leemajor-publishing-assets.s3.us-west-2.amazonaws.com/leemajor_banner.png"
   return (
     <Box>
       {/* Banner */}
@@ -22,16 +22,15 @@ export default function GetPublished() {
       >
         <Box
           component="img"
-          src={BannerLogo}
+          src={bannerImage}
           alt="LeeMajor Publishing"
           sx={{
             position: 'absolute',
-            right: { xs: -40, sm: -20 },
-            top: { xs: -20, sm: -10 },
-            width: { xs: 220, sm: 260, md: 320 },
+            
             opacity: 0.15,
             pointerEvents: 'none',
             userSelect: 'none',
+            objectFit: 'contain',
           }}
         />
         <Stack spacing={2} sx={{ position: 'relative', zIndex: 1, maxWidth: 760 }}>
@@ -72,7 +71,7 @@ export default function GetPublished() {
             <Typography variant="body1" color="text.secondary">
               We are an author‑first publisher. Our team takes care of editing, interior and cover
               formatting, publishing logistics, pricing, and everything else that goes into getting
-              a book released. You bring the manuscript—we’ll shepherd it to a professional
+              a book released. You bring the manuscript, we’ll shepherd it to a professional
               publication.
             </Typography>
           </CardContent>
@@ -90,7 +89,7 @@ export default function GetPublished() {
                 We currently publish through Amazon and IngramSpark, and that list is growing.
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Advertising can be expensive. We prioritize free channels—social media, newsletters,
+                Advertising can be expensive. We prioritize free channels, social media, newsletters,
                 and community outreach. If we decide together to enhance sales with paid campaigns,
                 we’ll align on terms that make sense. Practically, that means we may adjust royalties
                 slightly to offset ad costs, always transparently and by mutual agreement.
@@ -112,11 +111,7 @@ export default function GetPublished() {
               All we really need is the manuscript. We can help with art creation, cover design,
               and any other assets required to publish your book.
             </Typography>
-            <Stack direction="row" spacing={1.5} sx={{ mt: 2 }}>
-              <Button component={RouterLink} to="/contact" variant="contained">
-                Reach out via contact form
-              </Button>
-            </Stack>
+            
           </CardContent>
         </Card>
 
@@ -128,7 +123,7 @@ export default function GetPublished() {
             <Typography variant="body1" color="text.secondary">
               You do! We’ll put in the work to get you published and help build your presence.
               We’ll enter into a contract that grants us exclusive publishing rights for a fixed
-              term—typically 1, 3, or 5 years. During that time, we have the right to publish your
+              term - typically 1, 3, or 5 years. During that time, we have the right to publish your
               book across various channels, but it remains your book.
             </Typography>
           </CardContent>
@@ -151,4 +146,5 @@ export default function GetPublished() {
     </Box>
   )
 }
+
 
