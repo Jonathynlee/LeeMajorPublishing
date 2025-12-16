@@ -1,10 +1,9 @@
-import { Box, Container, IconButton, Stack, Typography } from '@mui/material'
+import { Box, Container, IconButton, Stack, Typography, SvgIcon } from '@mui/material'
 import { alpha, useTheme } from '@mui/material/styles'
-import FacebookIcon from '@mui/icons-material/Facebook'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import TwitterIcon from '@mui/icons-material/Twitter'
-import YouTubeIcon from '@mui/icons-material/YouTube'
-import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import TiktokIcon from '../assets/tiktokIcon.svg?react'
+import { instagramUrl, tiktokUrl, xUrl } from '../data/links'
 
 export default function Footer() {
   const theme = useTheme()
@@ -45,9 +44,9 @@ export default function Footer() {
 
           <Stack direction="row" spacing={1}>
             <IconButton
-              aria-label="Twitter"
+              aria-label="X"
               component="a"
-              href="#"
+              href={xUrl}
               target="_blank"
               rel="noopener"
               color="inherit"
@@ -58,7 +57,7 @@ export default function Footer() {
             <IconButton
               aria-label="Instagram"
               component="a"
-              href="#"
+              href={instagramUrl} 
               target="_blank"
               rel="noopener"
               color="inherit"
@@ -66,38 +65,17 @@ export default function Footer() {
             >
               <InstagramIcon />
             </IconButton>
+            
             <IconButton
-              aria-label="Facebook"
+              aria-label="TikTok"
               component="a"
-              href="#"
+              href={tiktokUrl}
               target="_blank"
               rel="noopener"
               color="inherit"
               sx={{ '&:hover': { color: 'primary.main' } }}
             >
-              <FacebookIcon />
-            </IconButton>
-            <IconButton
-              aria-label="LinkedIn"
-              component="a"
-              href="#"
-              target="_blank"
-              rel="noopener"
-              color="inherit"
-              sx={{ '&:hover': { color: 'primary.main' } }}
-            >
-              <LinkedInIcon />
-            </IconButton>
-            <IconButton
-              aria-label="YouTube"
-              component="a"
-              href="#"
-              target="_blank"
-              rel="noopener"
-              color="inherit"
-              sx={{ '&:hover': { color: 'primary.main' } }}
-            >
-              <YouTubeIcon />
+              <SvgIcon component={TiktokIcon} inheritViewBox sx={{ width: 22, height: 22 }} />
             </IconButton>
           </Stack>
         </Stack>

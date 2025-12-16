@@ -23,7 +23,7 @@ import { ColorModeContext } from "../contexts/ColorModeContext";
 const navItems = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
-  { label: "Products", to: "/products" },
+  { label: "Buy A Book", to: "/products" },
   { label: "Get Published", to: "/get-published" },
   { label: "Contact", to: "/contact" },
 ];
