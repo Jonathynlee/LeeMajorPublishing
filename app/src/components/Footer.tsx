@@ -1,8 +1,8 @@
 import { Box, Container, IconButton, Stack, Typography, SvgIcon } from '@mui/material'
 import { alpha, useTheme } from '@mui/material/styles'
 import InstagramIcon from '@mui/icons-material/Instagram'
-import TwitterIcon from '@mui/icons-material/Twitter'
 import TiktokIcon from '../assets/tiktokIcon.svg?react'
+import XIcon from '@mui/icons-material/X'
 import { instagramUrl, tiktokUrl, xUrl } from '../data/links'
 
 export default function Footer() {
@@ -52,7 +52,7 @@ export default function Footer() {
               color="inherit"
               sx={{ '&:hover': { color: 'primary.main' } }}
             >
-              <TwitterIcon />
+              <XIcon />
             </IconButton>
             <IconButton
               aria-label="Instagram"
