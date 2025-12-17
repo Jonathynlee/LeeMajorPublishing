@@ -12,6 +12,7 @@ const Contact = lazy(() => import('./pages/Contact'))
 const BookLore = lazy(() => import('./pages/BookLore'))
 const RedirectSale = lazy(() => import('./pages/RedirectSale'))
 const GetPublished = lazy(() => import('./pages/GetPublished'))
+const IdeaGenerator = lazy(() => import('./pages/IdeaGenerator'))
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/get-published" element={<GetPublished />} />
+            <Route path="/idea-generator" element={<IdeaGenerator />} />
             <Route path="/lore/:bookId" element={<BookLore />} />
             <Route path="/redirectSale/:site/:bookId" element={<RedirectSale />} />
           </Routes>

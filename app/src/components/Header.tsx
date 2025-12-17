@@ -25,6 +25,7 @@ const navItems = [
   { label: "About", to: "/about" },
   { label: "Buy A Book", to: "/products" },
   { label: "Get Published", to: "/get-published" },
+  { label: "Idea Generator", to: "/idea-generator" },
   { label: "Contact", to: "/contact" },
 ];
 
