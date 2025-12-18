@@ -27,6 +27,7 @@ import {
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import AutorenewIcon from '@mui/icons-material/Autorenew'
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
+import Seo from '../components/Seo'
 
 type Mode = 'simple' | 'advanced'
 
@@ -179,7 +180,7 @@ export default function IdeaGenerator() {
     const raw = localStorage.getItem('ideaGen.advanced')
     return raw ? (JSON.parse(raw) as AdvancedState) : defaultAdvanced()
   })
-	const [output, setOutput] = useState('')
+	const [output, setOutput] = useState(() => localStorage.getItem('ideaGen.story') ?? '')
 	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
@@ -315,6 +316,7 @@ export default function IdeaGenerator() {
 				setError(data.message || 'The request failed. Please try again.')
 			} else {
 				setOutput(data.output ?? '')
+				localStorage.setItem('ideaGen.story', data.output ?? '')
 			}
 		} catch {
 			setError('Network error. Please check your connection and try again.')
@@ -330,6 +332,86 @@ export default function IdeaGenerator() {
 
   return (
     <Box>
+      <Seo
+        title="AI Story Idea Generator | LeeMajor Publishing"
+        description="Generate unique book and short story ideas with AI. Simple or advanced controls for genre, tone, themes, worldbuilding, and more."
+        canonical="https://leemajorpublishing.com/idea-generator"
+        openGraph={{
+          title: 'AI Story Idea Generator | LeeMajor Publishing',
+          description:
+            'Generate unique book and short story ideas with AI. Simple or advanced controls for genre, tone, themes, worldbuilding, and more.',
+          url: 'https://leemajorpublishing.com/idea-generator',
+          siteName: 'LeeMajor Publishing',
+          type: 'website',
+          image: '/favicon.png',
+        }}
+        twitter={{
+          card: 'summary_large_image',
+          title: 'AI Story Idea Generator | LeeMajor Publishing',
+          description:
+            'Generate unique book and short story ideas with AI. Simple or advanced controls for genre, tone, themes, worldbuilding, and more.',
+          image: '/favicon.png',
+        }}
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'WebApplication',
+            name: 'AI Story Idea Generator',
+            url: 'https://leemajorpublishing.com/idea-generator',
+            applicationCategory: 'Writing',
+            operatingSystem: 'Web',
+            description:
+              'Generate unique book and short story ideas with AI. Simple or advanced controls for genre, tone, themes, worldbuilding, and more.',
+            publisher: {
+              '@type': 'Organization',
+              name: 'LeeMajor Publishing',
+              url: 'https://leemajorpublishing.com',
+            },
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Is the AI story idea generator free to use?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text:
+                    'Yes, you can generate ideas freely. Use Simple for quick prompts or Advanced to add detailed preferences.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Can I generate a short story, not just an idea?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text:
+                    'Yes. The generator produces a structured prompt that requests a 300–500 word short story output.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Can I customize genre, tone, and worldbuilding?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text:
+                    'Absolutely. Choose from multi-select options or use the Custom input to describe your own.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Will my inputs be saved?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text:
+                    'Your inputs are saved locally in your browser until you clear them. Nothing is publicly stored.',
+                },
+              },
+            ],
+          },
+        ]}
+      />
       <Stack spacing={3}>
         <Box
           sx={{
@@ -362,10 +444,21 @@ export default function IdeaGenerator() {
           </Tabs>
           <Divider />
           <CardContent>
+            <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
             <Typography variant="h6" gutterBottom>
               {currentCardTitle}
             </Typography>
-
+            {currentCardTitle === 'Simple Mode' && <Tooltip title="Randomize Simple inputs">
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      startIcon={<AutorenewIcon />}
+                      onClick={handleSurpriseMe}
+                    >
+                      Surprise me
+                    </Button>
+              </Tooltip>}
+              </Box>
             {mode === 'simple' ? (
               <Stack spacing={2.5}>
                 <MultiSelectWithCustom
@@ -416,16 +509,6 @@ export default function IdeaGenerator() {
                 />
 
                 <Stack direction="row" spacing={1.5} justifyContent="flex-end">
-                  <Tooltip title="Randomize Simple inputs">
-                    <Button
-                      variant="outlined"
-                      color="secondary"
-                      startIcon={<AutorenewIcon />}
-                      onClick={handleSurpriseMe}
-                    >
-                      Surprise me
-                    </Button>
-                  </Tooltip>
                   <Tooltip title="Clear current mode inputs">
                     <Button
                       variant="text"
