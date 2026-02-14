@@ -3,7 +3,8 @@ import { alpha, useTheme } from '@mui/material/styles'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import TiktokIcon from '../assets/tiktokIcon.svg?react'
 import XIcon from '@mui/icons-material/X'
-import { instagramUrl, tiktokUrl, xUrl } from '../data/links'
+import YouTubeIcon from '@mui/icons-material/YouTube'
+import { instagramUrl, tiktokUrl, xUrl, youtubeUrl } from '../data/links'
 
 export default function Footer() {
   const theme = useTheme()
@@ -76,6 +77,17 @@ export default function Footer() {
               sx={{ '&:hover': { color: 'primary.main' } }}
             >
               <SvgIcon component={TiktokIcon} inheritViewBox sx={{ width: 22, height: 22 }} />
+            </IconButton>
+            <IconButton
+              aria-label="YouTube"
+              component="a"
+              href={youtubeUrl}
+              target="_blank"
+              rel="noopener"
+              color="inherit"
+              sx={{ '&:hover': { color: 'primary.main' } }}
+            >
+              <YouTubeIcon />
             </IconButton>
           </Stack>
         </Stack>
